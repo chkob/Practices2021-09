@@ -1,4 +1,7 @@
 **/node_modules
 **/.yarn
+**/bin
+**/obj
+**/dist
 /WebAPI01/obj
 /WebAPI01/bin
