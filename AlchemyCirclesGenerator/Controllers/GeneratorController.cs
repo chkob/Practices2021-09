@@ -81,7 +81,7 @@ namespace AlchemyCirclesGenerator.Controllers
                     // draw lines from center to each of vervices
                     for (var l1 = 0; l1 < lati; l1++)
                     {
-                        var ang = ConvertDegreesToRadians((360 / (lati))) * l1;
+                        var ang = ConvertDegreesToRadians((360.0 / (lati))) * l1;
                         g.DrawLine(pen, new PointF(centerX, centerY), new PointF((float)(centerX + radius * Math.Cos(ang)), (float)(centerY + radius * Math.Sin(ang))));
                     }
 
@@ -103,7 +103,7 @@ namespace AlchemyCirclesGenerator.Controllers
 
                         for (var l2 = 0; l2 < lati; l2++)
                         {
-                            var ang = ConvertDegreesToRadians((360 / (latis))) * l2;
+                            var ang = ConvertDegreesToRadians((360.0 / (latis))) * l2;
                             g.DrawLine(pen, new PointF(centerX, centerY), new PointF((float)(centerX + radius * Math.Cos(ang)), (float)(centerY + radius * Math.Sin(ang))));
                         }
                     }
@@ -129,7 +129,7 @@ namespace AlchemyCirclesGenerator.Controllers
                         {
                             for (var l3 = 0; l3 < lati + 4; l3++)
                             {
-                                var ang = ConvertDegreesToRadians((360 / (lati + 4))) * l3;
+                                var ang = ConvertDegreesToRadians((360.0 / (lati + 4))) * l3;
                                 g.DrawLine(pen, new PointF(centerX, centerY), new PointF((float)(centerX + (((radius / 8) * 5) + 2) * Math.Cos(ang)), (float)(centerY + (((radius / 8) * 5) + 2) * Math.Sin(ang))));
                             }
 
@@ -143,7 +143,7 @@ namespace AlchemyCirclesGenerator.Controllers
                         {
                             for (var l3 = 0; l3 < lati - 2; l3++)
                             {
-                                var ang = ConvertDegreesToRadians((360 / (lati - 2))) * l3;
+                                var ang = ConvertDegreesToRadians((360.0 / (lati - 2))) * l3;
                                 g.DrawLine(pen, new PointF(centerX, centerY), new PointF((float)(centerX + (((radius / 8) * 5) + 2) * Math.Cos(ang)), (float)(centerY + (((radius / 8) * 5) + 2) * Math.Sin(ang))));
                             }
 
@@ -336,7 +336,7 @@ namespace AlchemyCirclesGenerator.Controllers
 
                                 for (var l4 = 0; l4 < numSatellite; l4++)
                                 {
-                                    var ang = ConvertDegreesToRadians((360.0f / numSatellite)) * l4;
+                                    var ang = ConvertDegreesToRadians((360.0 / numSatellite)) * l4;
                                     g.DrawLine(pen3,
                                         new PointF((float)(centerX + (radius / 3) * 2 * Math.Cos(ang)), (float)(centerY + (radius / 3) * 2 * Math.Sin(ang))),
                                         new PointF((float)(centerX + radius * Math.Cos(ang)), (float)(centerY + radius * Math.Sin(ang))));
@@ -394,7 +394,7 @@ namespace AlchemyCirclesGenerator.Controllers
 
         private IList<PolygonPoint> GetSatelliteCenter(int numSatellite, float radius, int factor1, int factor2)
         {
-            var ang = ConvertDegreesToRadians((360.0f / (float)numSatellite));
+            var ang = ConvertDegreesToRadians((360.0 / (float)numSatellite), true);
 
             if (factor1 <= 0) factor1 = 2;
 
@@ -412,9 +412,10 @@ namespace AlchemyCirclesGenerator.Controllers
             return returnPoints;
         }
 
-        private static double ConvertDegreesToRadians(double degrees)
+        private static double ConvertDegreesToRadians(double degrees, bool useLocalPi = false)
         {
-            var radians = (Math.PI / 180) * degrees;
+            var pi = useLocalPi ? 4.0 * Math.Atan(1.0) : Math.PI;
+            var radians = (pi / 180.0) * degrees;
             return radians;
         }
 
