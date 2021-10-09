@@ -198,7 +198,18 @@ namespace AlchemyCirclesGenerator.Controllers
                         }
                     }
 
-                    //var numSatellite = GetNumSatellite(lati, rng.Next(0, 1), rng.Next(2, 6));
+                    var numSatellite = GetNumSatellite(lati, rng.Next(0, 1), rng.Next(2, 6));
+
+                    if (param.DrawSatellite) 
+                    {
+                        var colorBrush = new SolidBrush(backgroundColor);
+                        var radiusOffset1 = (radius / 18) * 12;
+                        var radiusOffset2 = (radius / 22) * 12;
+
+                        g.DrawArc(pen, centerX - radiusOffset1 / 2, centerY - radiusOffset1 / 2, radiusOffset1, radiusOffset1, 0.0f, 360.0f);
+                        g.FillPie(colorBrush, centerX - radiusOffset2 / 2, centerY - radiusOffset2 / 2, radiusOffset2, radiusOffset2, 0.0f, 360.0f);
+                        g.DrawArc(pen, centerX - radiusOffset2 / 2, centerY - radiusOffset2 / 2, radiusOffset2, radiusOffset2, 0.0f, 360.0f);
+                    }
 
                     //switch (rng.Next(0, 3))
                     //{
