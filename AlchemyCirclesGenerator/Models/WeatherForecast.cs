@@ -1,6 +1,6 @@
 using System;
 
-namespace AlchemyCirclesGenerator
+namespace AlchemyCirclesGenerator.Models
 {
     public class WeatherForecast
     {
