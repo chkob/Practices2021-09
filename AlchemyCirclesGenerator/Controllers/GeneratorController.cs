@@ -198,117 +198,117 @@ namespace AlchemyCirclesGenerator.Controllers
                         }
                     }
 
-                    var numSatellite = GetNumSatellite(lati, rng.Next(0, 1), rng.Next(2, 6));
+                    //var numSatellite = GetNumSatellite(lati, rng.Next(0, 1), rng.Next(2, 6));
 
-                    switch (rng.Next(0, 3))
-                    {
-                        case 0:
-                            {
-                                for (var l4 = 0; l4 < numSatellite; l4++)
-                                {
-                                    var ang = ConvertDegreesToRadians((360 / numSatellite));
-                                    var posAx = (radius / 18) * 11 * Math.Cos(l4 * ang);
-                                    var posAy = (radius / 18) * 11 * Math.Sin(l4 * ang);
+                    //switch (rng.Next(0, 3))
+                    //{
+                    //    case 0:
+                    //        {
+                    //            for (var l4 = 0; l4 < numSatellite; l4++)
+                    //            {
+                    //                var ang = ConvertDegreesToRadians((360 / numSatellite));
+                    //                var posAx = (radius / 18) * 11 * Math.Cos(l4 * ang);
+                    //                var posAy = (radius / 18) * 11 * Math.Sin(l4 * ang);
 
-                                    var colorBrush = new SolidBrush(backgroundColor);
-                                    var radiusOffset = (radius / 44) * 12;
+                    //                var colorBrush = new SolidBrush(backgroundColor);
+                    //                var radiusOffset = (radius / 44) * 12;
 
-                                    if (param.DrawSatellite)
-                                    {
-                                        g.FillPie(colorBrush, (float)(centerX - (posAx * 3 / 2)), (float)(centerY + (posAy * 3 / 2)), radiusOffset, radiusOffset, 0.0f, 360.0f);
-                                        g.DrawArc(pen, (float)(centerX - (posAx * 3 / 2)), (float)(centerY + (posAy * 3 / 2)), radiusOffset, radiusOffset, 0.0f, 360.0f);
-                                    }
+                    //                if (param.DrawSatellite)
+                    //                {
+                    //                    g.FillPie(colorBrush, (float)(centerX - (posAx * 3 / 2)), (float)(centerY - (posAy * 3 / 2)), radiusOffset, radiusOffset, 0.0f, 360.0f);
+                    //                    g.DrawArc(pen, (float)(centerX - (posAx * 3 / 2)), (float)(centerY - (posAy * 3 / 2)), radiusOffset, radiusOffset, 0.0f, 360.0f);
+                    //                }
 
-                                    if (param.DrawLineToSatellite)
-                                    {
-                                        g.DrawLine(pen,
-                                            new PointF()
-                                            {
-                                                X = centerX,
-                                                Y = centerY
-                                            },
-                                            new PointF()
-                                            {
-                                                X = (float)(centerX + posAx / 2),
-                                                Y = (float)(centerY + posAy / 2)
-                                            });
-                                    }
-                                }
-                            }
-                            break;
-                        case 1:
-                            {
-                                for (var l4 = 0; l4 < numSatellite; l4++)
-                                {
-                                    var ang = ConvertDegreesToRadians((360 / numSatellite));
-                                    var posAx = radius * Math.Cos(l4 * ang);
-                                    var posAy = radius * Math.Sin(l4 * ang);
+                    //                if (param.DrawLineToSatellite)
+                    //                {
+                    //                    g.DrawLine(pen,
+                    //                        new PointF()
+                    //                        {
+                    //                            X = centerX,
+                    //                            Y = centerY
+                    //                        },
+                    //                        new PointF()
+                    //                        {
+                    //                            X = (float)(centerX - (posAx * 3 / 2)),
+                    //                            Y = (float)(centerY - (posAy * 3 / 2))
+                    //                        });
+                    //                }
+                    //            }
+                    //        }
+                    //        break;
+                    //    case 1:
+                    //        {
+                    //            for (var l4 = 0; l4 < numSatellite; l4++)
+                    //            {
+                    //                var ang = ConvertDegreesToRadians((360 / numSatellite));
+                    //                var posAx = radius * Math.Cos(l4 * ang);
+                    //                var posAy = radius * Math.Sin(l4 * ang);
 
-                                    var colorBrush = new SolidBrush(backgroundColor);
-                                    var radiusOffset = (radius / 44) * 12;
+                    //                var colorBrush = new SolidBrush(backgroundColor);
+                    //                var radiusOffset = (radius / 44) * 12;
 
-                                    if (param.DrawSatellite)
-                                    {
-                                        g.FillPie(colorBrush, (float)(centerX - (posAx / 2)), (float)(centerY + (posAy / 2)), radiusOffset, radiusOffset, 0.0f, 360.0f);
-                                        g.DrawArc(pen, (float)(centerX - (posAx / 2)), (float)(centerY + (posAy / 2)), radiusOffset, radiusOffset, 0.0f, 360.0f);
-                                    }
+                    //                if (param.DrawSatellite)
+                    //                {
+                    //                    g.FillPie(colorBrush, (float)(centerX - (posAx / 2)), (float)(centerY - (posAy / 2)), radiusOffset, radiusOffset, 0.0f, 360.0f);
+                    //                    g.DrawArc(pen, (float)(centerX - (posAx / 2)), (float)(centerY - (posAy / 2)), radiusOffset, radiusOffset, 0.0f, 360.0f);
+                    //                }
 
-                                    if (param.DrawLineToSatellite)
-                                    {
-                                        g.DrawLine(pen,
-                                             new PointF()
-                                             {
-                                                 X = centerX,
-                                                 Y = centerY
-                                             },
-                                             new PointF()
-                                             {
-                                                 X = (float)(centerX + posAx / 2),
-                                                 Y = (float)(centerY + posAy / 2)
-                                             });
-                                    }
-                                }
-                            }
-                            break;
-                        case 2:
-                            {
-                                var colorBrush = new SolidBrush(backgroundColor);
-                                var radiusOffset1 = (radius / 18) * 12;
-                                var radiusOffset2 = (radius / 22) * 12;
+                    //                if (param.DrawLineToSatellite)
+                    //                {
+                    //                    g.DrawLine(pen,
+                    //                         new PointF()
+                    //                         {
+                    //                             X = centerX,
+                    //                             Y = centerY
+                    //                         },
+                    //                         new PointF()
+                    //                         {
+                    //                             X = (float)(centerX - (posAx / 2)),
+                    //                             Y = (float)(centerY - (posAy / 2))
+                    //                         });
+                    //                }
+                    //            }
+                    //        }
+                    //        break;
+                    //    case 2:
+                    //        {
+                    //            var colorBrush = new SolidBrush(backgroundColor);
+                    //            var radiusOffset1 = (radius / 18) * 12;
+                    //            var radiusOffset2 = (radius / 22) * 12;
 
-                                g.DrawArc(pen, centerX - radiusOffset1 / 2, centerY - radiusOffset1 / 2, radiusOffset1, radiusOffset1, 0.0f, 360.0f);
-                                g.FillPie(colorBrush, centerX - radiusOffset2 / 2, centerY - radiusOffset2 / 2, radiusOffset2, radiusOffset2, 0.0f, 360.0f);
-                                g.DrawArc(pen, centerX - radiusOffset2 / 2, centerY - radiusOffset2 / 2, radiusOffset2, radiusOffset2, 0.0f, 360.0f);
-                            }
-                            break;
-                        case 3:
-                        default:
-                            {
-                                for (var l4 = 0; l4 < numSatellite; l4++)
-                                {
-                                    var ang = ConvertDegreesToRadians((360 / numSatellite)) * l4;
-                                    g.DrawLine(pen,
-                                        new PointF((float)(centerX + (radius / 3) * 2 * Math.Cos(ang)), (float)(centerY + (radius / 3) * 2 * Math.Sin(ang))),
-                                        new PointF((float)(centerX + radius * Math.Cos(ang)), (float)(centerY + radius * Math.Sin(ang))));
-                                }
+                    //            g.DrawArc(pen, centerX - radiusOffset1 / 2, centerY - radiusOffset1 / 2, radiusOffset1, radiusOffset1, 0.0f, 360.0f);
+                    //            g.FillPie(colorBrush, centerX - radiusOffset2 / 2, centerY - radiusOffset2 / 2, radiusOffset2, radiusOffset2, 0.0f, 360.0f);
+                    //            g.DrawArc(pen, centerX - radiusOffset2 / 2, centerY - radiusOffset2 / 2, radiusOffset2, radiusOffset2, 0.0f, 360.0f);
+                    //        }
+                    //        break;
+                    //    case 3:
+                    //    default:
+                    //        {
+                    //            for (var l4 = 0; l4 < numSatellite; l4++)
+                    //            {
+                    //                var ang = ConvertDegreesToRadians((360 / numSatellite)) * l4;
+                    //                g.DrawLine(pen,
+                    //                    new PointF((float)(centerX + (radius / 3) * 2 * Math.Cos(ang)), (float)(centerY + (radius / 3) * 2 * Math.Sin(ang))),
+                    //                    new PointF((float)(centerX + radius * Math.Cos(ang)), (float)(centerY + radius * Math.Sin(ang))));
+                    //            }
 
-                                if (numSatellite != lati)
-                                {
-                                    var colorBrush = new SolidBrush(backgroundColor);
-                                    var radiusOffset1 = (radius / 3) * 4;
-                                    g.FillPie(colorBrush, centerX - radiusOffset1 / 2, centerY - radiusOffset1 / 2, radiusOffset1, radiusOffset1, 0.0f, 360.0f);
-                                    g.DrawArc(pen, centerX - radiusOffset1 / 2, centerY - radiusOffset1 / 2, radiusOffset1, radiusOffset1, 0.0f, 360.0f);
-                                    lati = rng.Next(3, 17);
-                                    var polygon5 = CreatePolygonPoints(numSatellite, 0, (radius / 4) * 5, Math.Min(width, height));
-                                    var polygon6 = CreatePolygonPoints(numSatellite, 180, (radius / 3) * 2, Math.Min(width, height));
-                                    var drawingPolygon5 = polygon5.Select(p => new PointF(p.X, p.Y)).ToArray();
-                                    var drawingPolygon6 = polygon6.Select(p => new PointF(p.X, p.Y)).ToArray();
-                                    g.DrawPolygon(pen, drawingPolygon5);
-                                    g.DrawPolygon(pen, drawingPolygon6);
-                                }
-                            }
-                            break;
-                    }
+                    //            if (numSatellite != lati)
+                    //            {
+                    //                var colorBrush = new SolidBrush(backgroundColor);
+                    //                var radiusOffset1 = (radius / 3) * 4;
+                    //                g.FillPie(colorBrush, centerX - radiusOffset1 / 2, centerY - radiusOffset1 / 2, radiusOffset1, radiusOffset1, 0.0f, 360.0f);
+                    //                g.DrawArc(pen, centerX - radiusOffset1 / 2, centerY - radiusOffset1 / 2, radiusOffset1, radiusOffset1, 0.0f, 360.0f);
+                    //                lati = rng.Next(3, 17);
+                    //                var polygon5 = CreatePolygonPoints(numSatellite, 0, (radius / 4) * 5, Math.Min(width, height));
+                    //                var polygon6 = CreatePolygonPoints(numSatellite, 180, (radius / 3) * 2, Math.Min(width, height));
+                    //                var drawingPolygon5 = polygon5.Select(p => new PointF(p.X, p.Y)).ToArray();
+                    //                var drawingPolygon6 = polygon6.Select(p => new PointF(p.X, p.Y)).ToArray();
+                    //                g.DrawPolygon(pen, drawingPolygon5);
+                    //                g.DrawPolygon(pen, drawingPolygon6);
+                    //            }
+                    //        }
+                    //        break;
+                    //}
 
                     if (param.ForceBGTransparent)
                     {
